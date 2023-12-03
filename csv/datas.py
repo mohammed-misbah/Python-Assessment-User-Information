@@ -8,7 +8,6 @@ data = [
     {"Name": "Eve", "Age": 35},
 ]
 
-# Specify the file name
 file_name = "people_data.csv"
 
 # Write data to CSV file

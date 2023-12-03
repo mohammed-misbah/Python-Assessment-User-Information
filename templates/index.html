@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="/" method="post" enctype="multipart/form-data">
-    
-    <div class="mb-3">
-        <label for="csvFile">Upload CSV File</label>
-        <input type="file" name="csvFile" id="csvFile" accept=".csv" class="form-control" required/>
-    </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-
-</form>
+<div class="container text-center">
+    <form action="/file_upload" method="post" enctype="multipart/form-data" class="max-w-md mx-auto my-8">
+        <div class="form-group">
+            <label for="csvFile"><b>Choose a CSV file:</b></label>
+            <input type="file" name="file" id="csvFile" accept=".csv" style="width: 500px; margin: 0 auto;"  class="form-control" required />
+        </div>
+        
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary" style="width: 500px;">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}
+

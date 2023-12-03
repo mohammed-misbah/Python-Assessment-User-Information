@@ -1,19 +1,36 @@
-{% extends "basef.html" %}
+{% extends "base.html" %}
 {% block content %}
-    {% for item in items %}
-    <div class="mb-3">
-        <p>{{ item.name }}</p>
-        <p>{{ item.age }}</p>
-        <input type="checkbox" name="selected_items" value="{{ loop.index0 }}">
-    </div>
-    {% endfor %}
-    
-    <div class="mb-3">
-        <label for="selectedItems">Select Items to Submit</label>
-        <select name="selectedItems" id="selectedItems" class="form-control" multiple>
-            {% for item in items %}
-            <option value="{{ loop.index0 }}">{{ item.name }}</option>
-            {% endfor %}
-        </select>
+{% set csv_file_submitted = csv_file_submitted %}
+{% set items = items %}
+<div class="container text-center">
+    {% if csv_file_submitted %}
+    <h5>Choose Item and Submit</h5>
+        <form action="/save_selected_items" method="post" class="max-w-md mx-auto my-8 mt-4">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td><input type="checkbox" name="selected_items" value="{{ loop.index0 }}"></td>
+                            <td>{{ item['Name'] }}</td>
+                            <td>{{ item['Age'] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success" style="width: 500px;">Save Items</button>
+            </div>
+        </form>
+    {% endif %}
+</div>
 
 {% endblock %}
