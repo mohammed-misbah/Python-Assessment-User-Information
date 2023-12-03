@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/" method="post" enctype="multipart/form-data">
+    
+    <div class="mb-3">
+        <label for="csvFile">Upload CSV File</label>
+        <input type="file" name="csvFile" id="csvFile" accept=".csv" class="form-control" required/>
+    </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+</form>
+{% endblock %}
